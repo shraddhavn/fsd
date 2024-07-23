@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+ <html lang="en" data-bs-theme="dark">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <style>
+        .feature-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 0.75rem;
+        }
+        
+        .main {
+            flex: 1;
+        }
+        .title-image{
+            height:100px;
+            float:left;
+            margin:50px; 
+        }
+        .card{width:45%}
+          
+        @media (max-width:680px) {
+            .logo{
+              width:100px
+            }
+          
+            h1{font-size:3.5rem; text-align: center;}
+          
+            .card{
+              width:100%;
+              display:block;
+              margin-bottom: 30px;
+              text-align: justify;
+              
+            }
+          
+            .card img{
+              margin-bottom: 10px;
+              width:100%;
+              display: inline;
+              object-fit: cover;
+            }
+          }
+    </style>
+ </head>
+ <body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><img src="./extras/person-circle.svg" height="30" alt="box"> Shraddha N</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./portfolio.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./aboutme.html">About</a>
+                  </li> 
+                  <li class="nav-item">
+                    <a class="nav-link" href="./contactme.html">Contact</a>
+                  </li>    
+                </ul>
+              </div>
+            </div>
+        </nav>
+    <br>
+    <h1> I'm a Web Developer</h1>
+    </header>
+    <hr>
+    <h2> My Projects</h2>
+    <br><br>
+    <div class="container">
+      <div class="left card">
+          <a href="./motivationmeme.html" class="card-title">Motivation Meme Project</a>
+          <img class="tile-image" src="./screenshots/motivationmeme.png" alt="motivation meme">
+      </div>
+      <br><br>
+      <div class="center card">
+          <a href="./designagency.html" class="card-title">Design Agency Project</a>
+          <img class="tile-image" src="./screenshots/designagency.png" alt="design agency">
+      </div>
+      <br><br>
+      <div class="right card">
+          <a href="./moveit.html" class="card-title">Moving Company Project</a>
+          <img class="tile-image" src="./screenshots/moveit.png" alt="moving company">
+      </div>
+    </div>
+    <hr>
+    <footer>
+        <h3>Information</h3>
+            <ul>
+              <li class="port"><a href="./aboutme.html">About me</a></li>
+              <li class="port"><a href="./contactme.html">Contact me</a></li>
+            </ul>
+        <br>
+        <br>
+        <p class="text-body-secondary">© Shraddha Nargund</p>        
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+ </body>
+ </html>
