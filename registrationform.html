@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .phone-input {
+            display: flex;
+        }
+        #phoneCode {
+            width: 30%;
+            margin-right: 10px;
+        }
+        #phoneNumber {
+            width: 70%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm" onsubmit="return validateForm()">
+            <input type="text" id="name" name="name" placeholder="Enter your Name">
+            <input type="number" id="age" placeholder="Enter your age" readonly>
+            <input type="date" id="birthdate" name="birthdate" onchange="calculateAge()">
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+            <input type="password" id="password" name="password" placeholder="Enter password">
+            <select id="country" name="country" onchange="updatePhoneCode()">
+                <option value="">Select your country</option>
+                <option value="USA" data-code="+1">United States</option>
+                <option value="UK" data-code="+44">United Kingdom</option>
+                <option value="Canada" data-code="+1">Canada</option>
+                <option value="Australia" data-code="+61">Australia</option>
+                <option value="India" data-code="+91">India</option>
+            </select>
+            <div class="phone-input">
+                <input type="text" id="phoneCode" readonly>
+                <input type="tel" id="phoneNumber" placeholder="Enter your phone number">
+            </div>
+            <input type="text" id="zipcode" placeholder="Enter your zipcode">
+            <input type="submit" value="Register">
+        </form>
+    </div>
+
+    <script type="text/javascript">
+    function calculateAge() {
+        var birthdate = new Date(document.getElementById('birthdate').value);
+        var today = new Date();
+        var age = today.getFullYear() - birthdate.getFullYear();
+        var m = today.getMonth() - birthdate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
+            age--;
+        }
+        document.getElementById('age').value = age;
+    }
+
+    function updatePhoneCode() {
+        var country = document.getElementById('country');
+        var phoneCode = document.getElementById('phoneCode');
+        var selectedOption = country.options[country.selectedIndex];
+        phoneCode.value = selectedOption.getAttribute('data-code') || '';
+    }
+
+    function validateForm() {
+        var name = document.getElementById('name').value;
+        if (name === '') {
+            alert('Name is required');
+            return false;
+        }
+
+        var age = document.getElementById('age').value;
+        if (age === '' || age < 0 || age > 120) {
+            alert('Please enter a valid age');
+            return false;
+        }
+
+        var birthdate = document.getElementById('birthdate').value;
+        if (birthdate === '') {
+            alert('Birthdate is required');
+            return false;
+        } else if (new Date(birthdate) > new Date()) {
+            alert('Birthdate cannot be in the future');
+            return false;
+        }
+
+        var email = document.getElementById('email').value;
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address');
+            return false;
+        }
+
+        var password = document.getElementById('password').value;
+        if (password.length < 8) {
+            alert('Password must be at least 8 characters long');
+            return false;
+        }
+
+        var phoneCode = document.getElementById('phoneCode').value;
+        var phoneNumber = document.getElementById('phoneNumber').value;
+        var phoneRegex = /^\d{10}$/;
+        if (phoneCode === '' || !phoneRegex.test(phoneNumber)) {
+            alert('Please enter a valid phone number');
+            return false;
+        }
+
+        var zipcode = document.getElementById('zipcode').value;
+        var zipcodeRegex = /^\d{5}(-\d{4})?$/;
+        if (!zipcodeRegex.test(zipcode)) {
+            alert('Please enter a valid zipcode (5 digits or 5+4 format)');
+            return false;
+        }
+
+        var country = document.getElementById('country').value;
+        if (country === '') {
+            alert('Please select a country');
+            return false;
+        }
+
+        return true;
+    }
+    </script>
+</body>
+</html>

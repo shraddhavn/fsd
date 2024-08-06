@@ -65,7 +65,7 @@
                   </li> 
                   <li class="nav-item">
                     <a class="nav-link" href="./contactme.html">Contact</a>
-                  </li>    
+                  </li>   
                 </ul>
               </div>
             </div>
@@ -104,6 +104,25 @@
         <p class="text-body-secondary">© Shraddha Nargund</p>        
     </footer>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
- </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.createElement('button');
+        themeToggle.textContent = "Toggle Theme";
+        themeToggle.className = "btn btn-secondary mt-3";
+        document.querySelector('header').appendChild(themeToggle);
+    
+        themeToggle.addEventListener('click', function() {
+            const html = document.documentElement;
+            if (html.getAttribute('data-bs-theme') === 'dark') {
+                html.setAttribute('data-bs-theme', 'light');
+            } else {
+                html.setAttribute('data-bs-theme', 'dark');
+            }
+        });
+    });
+    </script>
+</body>
  </html>
+ 
